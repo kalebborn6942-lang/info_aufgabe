@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.List;
 public class Algorithm {
     static Map map = new Map();
@@ -7,6 +8,7 @@ public class Algorithm {
     static Queue<Square> queue = new Queue<Square>();
     static Algorithm alg = new Algorithm();
     public static void main(String[] args){
+        System.out.println(sqagent.getTopRight(SquareMap[11][11],3));
         queue.enqueue(SquareMap[11][11]);
         while(!queue.isEmpty()){
             current = queue.front();
@@ -31,6 +33,14 @@ public class Algorithm {
         enqueueSquare(newsq,sq,"top");
         newsq = sqagent.getBottom(sq,sq.getNumber());
         enqueueSquare(newsq,sq,"bottom");
+        newsq = sqagent.getTopRight(sq,sq.getNumber());
+        enqueueSquare(newsq,sq,"Top Right");
+        newsq = sqagent.getTopLeft(sq,sq.getNumber());
+        enqueueSquare(newsq,sq,"Top Left");
+        newsq = sqagent.getBottomRight(sq,sq.getNumber());
+        enqueueSquare(newsq,sq,"Bottom Right");
+        newsq = sqagent.getBottomLeft(sq,sq.getNumber());
+        enqueueSquare(newsq,sq,"Bottom Left");
     }
 
     public void enqueueSquare(Square newsq,Square sq,String dir){
